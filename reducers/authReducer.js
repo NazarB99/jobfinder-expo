@@ -1,4 +1,4 @@
-import {GOOGLE_LOGIN_SUCCESS} from "../actions/types";
+import {FACEBOOK_LOGIN_SUCCESS, GOOGLE_LOGIN_SUCCESS} from "../actions/types";
 
 const initialState = {
     token:'',
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function (state = initialState,action) {
     switch (action.type){
-        case GOOGLE_LOGIN_SUCCESS:
+        case FACEBOOK_LOGIN_SUCCESS:
             return{
                 ...state,
                 token:action.payload.text

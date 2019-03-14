@@ -1,7 +1,13 @@
 import React,{Component} from 'react';
 import {View,Text} from 'react-native';
+import {connect} from 'react-redux';
+import {loginFacebook} from "../actions/authAction";
 
 class AuthScreens extends Component{
+    componentDidMount(){
+        this.props.loginFacebook();
+    }
+
     render(){
         return(
             <View>
@@ -11,4 +17,4 @@ class AuthScreens extends Component{
     }
 }
 
-export default AuthScreens;
+export default connect(null,{loginFacebook})(AuthScreens);
