@@ -1,4 +1,4 @@
-import {FACEBOOK_LOGIN_SUCCESS, GOOGLE_LOGIN_SUCCESS} from "../actions/types";
+import {FACEBOOK_LOGIN_FAIL, FACEBOOK_LOGIN_SUCCESS, GOOGLE_LOGIN_SUCCESS} from "../actions/types";
 
 const initialState = {
     token:'',
@@ -10,7 +10,12 @@ export default function (state = initialState,action) {
         case FACEBOOK_LOGIN_SUCCESS:
             return{
                 ...state,
-                token:action.payload.text
+                token:action.payload
+            };
+        case FACEBOOK_LOGIN_FAIL:
+            return{
+                ...state,
+                token:null
             };
         default:
             return{

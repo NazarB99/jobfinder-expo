@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text} from 'react-native';
+import {View,Text,AsyncStorage} from 'react-native';
 import {connect} from 'react-redux';
 import {loginFacebook} from "../actions/authAction";
 
@@ -8,13 +8,26 @@ class AuthScreens extends Component{
         this.props.loginFacebook();
     }
 
+    componentWillReceiveProps(nextProps){
+        this.onAuthComplete(nextProps);
+    }
+
+    onAuthComplete(props){
+        console.log(props);
+        if (props.auth.token){
+            this.props.navigation.navigate('map');
+        }
+    }
+
     render(){
         return(
-            <View>
-                <Text>Auth</Text>
-            </View>
+            <View/>
         )
     }
 }
 
-export default connect(null,{loginFacebook})(AuthScreens);
+const mapStateToProps = state => ({
+   auth:state.auth
+});
+
+export default connect(mapStateToProps,{loginFacebook})(AuthScreens);

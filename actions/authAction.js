@@ -3,7 +3,6 @@ import {AsyncStorage} from 'react-native';
 import {Facebook} from 'expo';
 
 export const loginFacebook = () => async dispatch => {
-    console.log("Login");
     let token = await AsyncStorage.getItem('fb_token');
     if (token) {
         dispatch({
