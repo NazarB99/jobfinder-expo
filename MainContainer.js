@@ -13,27 +13,34 @@ const MainNavigator = createBottomTabNavigator({
     auth: {screen: AuthScreens},
     main: {
         screen: createBottomTabNavigator({
-            map: {screen:MapScreen},
-            deck: {screen:DeckScreen},
+            map: {screen: MapScreen},
+            deck: {screen: DeckScreen},
             review: {
                 screen: createStackNavigator({
-                    review: {screen:ReviewScreens},
-                    settings: {screen:SettingsScreen}
+                    review: {screen: ReviewScreens},
+                    settings: {screen: SettingsScreen}
                 })
             }
         })
     }
-},{
-    lazy:true,
-    tabBarOptions:{
-        showLabel:false
-    }
+}, {
+    lazy: true,
 });
+
+MainNavigator.navigationOptions = ({navigation}) => {
+    let tabBarVisible;
+    tabBarVisible = false;
+
+
+    return {
+        tabBarVisible
+    };
+};
 
 const MainContainer = createAppContainer(MainNavigator);
 
 const mapStateToProps = state => ({
-    auth:state.auth
+    auth: state.auth
 });
 
 export default connect(mapStateToProps)(MainContainer);
