@@ -21,21 +21,15 @@ const MainNavigator = createBottomTabNavigator({
                     settings: {screen: SettingsScreen}
                 })
             }
+        },{
+            navigationOptions:{
+                tabBarVisible:false
+            }
         })
     }
 }, {
     lazy: true,
 });
-
-MainNavigator.navigationOptions = ({navigation}) => {
-    let tabBarVisible;
-    tabBarVisible = false;
-
-
-    return {
-        tabBarVisible
-    };
-};
 
 const MainContainer = createAppContainer(MainNavigator);
 

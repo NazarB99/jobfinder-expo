@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Slides from '../components/Slides';
-import {AsyncStorage,View} from 'react-native';
+import {AsyncStorage,View, ActivityIndicator} from 'react-native';
 import {AppLoading} from 'expo';
 
 const SLIDES_DATA = [
@@ -36,7 +36,7 @@ class WelcomeScreens extends Component{
         console.log(this.props.navigation.state.routeName);
         if(this.state.token === null){
             return(
-                <AppLoading/>
+                <ActivityIndicator/>
             )
         }
         else if (this.state.token === false) {
